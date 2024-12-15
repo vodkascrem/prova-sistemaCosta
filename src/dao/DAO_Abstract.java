@@ -22,9 +22,9 @@ public abstract class DAO_Abstract {
         session = sessionFactory.openSession();
     }
     
-    public abstract void insert(Object objeto);
-    public abstract void update(Object objeto);
-    public abstract void delete(Object objeto);
+    public abstract void insert(Object object);
+    public abstract void update(Object object);
+    public abstract void delete(Object object);
     public abstract Object list(int codigo);
     public abstract ArrayList listAll();
 }

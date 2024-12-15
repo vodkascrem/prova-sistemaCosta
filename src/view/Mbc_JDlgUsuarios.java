@@ -4,7 +4,6 @@
  */
 package view;
 import javax.swing.JFrame;
-import pesquisa.Mbc_JDlgClientesPesquisa;
 import tools.Util;
 
 /**

@@ -1,20 +1,20 @@
-package pesquisa;
+package view;
 
 
 /**
  *
  * @author vodka
  */
-public class Mbc_JDlgClientesPesquisa extends javax.swing.JDialog {
+public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
 
-    public Mbc_JDlgClientesPesquisa(java.awt.Frame parent, boolean modal) {
+    public Mbc_JDlgVendasProdutos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setTitle("Pequisar em Clientes");
         setLocationRelativeTo(null);
     }
 
-    public Mbc_JDlgClientesPesquisa() {
+    public Mbc_JDlgVendasProdutos() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -40,6 +40,9 @@ public class Mbc_JDlgClientesPesquisa extends javax.swing.JDialog {
         jBtnConfirmar = new javax.swing.JButton();
         jBtnCancelar = new javax.swing.JButton();
         jBtnPesquisa = new javax.swing.JButton();
+        jBtnIncluirLateral = new javax.swing.JButton();
+        jBtnAlterarLateral = new javax.swing.JButton();
+        jBtnExcluirLateral = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -124,6 +127,12 @@ public class Mbc_JDlgClientesPesquisa extends javax.swing.JDialog {
             }
         });
 
+        jBtnIncluirLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-selecionado-15.png"))); // NOI18N
+
+        jBtnAlterarLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/editar.png"))); // NOI18N
+
+        jBtnExcluirLateral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-remover-15.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,9 +144,9 @@ public class Mbc_JDlgClientesPesquisa extends javax.swing.JDialog {
                         .addComponent(jBtnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jBtnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jBtnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -164,7 +173,12 @@ public class Mbc_JDlgClientesPesquisa extends javax.swing.JDialog {
                             .addComponent(jTxt6)
                             .addComponent(jTxtTotal)))
                     .addComponent(jScrollPane1))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBtnIncluirLateral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnAlterarLateral, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                    .addComponent(jBtnExcluirLateral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +213,14 @@ public class Mbc_JDlgClientesPesquisa extends javax.swing.JDialog {
                         .addGap(30, 30, 30)
                         .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBtnIncluirLateral, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jBtnAlterarLateral, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jBtnExcluirLateral, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -236,13 +257,13 @@ public class Mbc_JDlgClientesPesquisa extends javax.swing.JDialog {
 
     private void jBtnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisaActionPerformed
         // TODO add your handling code here:
-        new Mbc_JDlgPedidosProdutos().setVisible (true);
+        new Mbc_JDlgPedidos().setVisible (true);
     }//GEN-LAST:event_jBtnPesquisaActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Mbc_JDlgClientesPesquisa dialog = new Mbc_JDlgClientesPesquisa(new javax.swing.JFrame(), true);
+                Mbc_JDlgVendasProdutos dialog = new Mbc_JDlgVendasProdutos(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -256,10 +277,13 @@ public class Mbc_JDlgClientesPesquisa extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnAlterar;
+    private javax.swing.JButton jBtnAlterarLateral;
     private javax.swing.JButton jBtnCancelar;
     private javax.swing.JButton jBtnConfirmar;
     private javax.swing.JButton jBtnExcluir;
+    private javax.swing.JButton jBtnExcluirLateral;
     private javax.swing.JButton jBtnIncluir;
+    private javax.swing.JButton jBtnIncluirLateral;
     private javax.swing.JButton jBtnPesquisa;
     private javax.swing.JComboBox<String> jCboCliente;
     private javax.swing.JComboBox<String> jCboFornecedor;

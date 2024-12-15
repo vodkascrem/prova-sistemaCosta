@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
-import pesquisa.Mbc_JDlgClientesPesquisa;
 import tools.Util;
 /**
  *
