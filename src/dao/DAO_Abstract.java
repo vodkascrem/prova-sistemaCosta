@@ -26,5 +26,5 @@ public abstract class DAO_Abstract {
     public abstract void update(Object objeto);
     public abstract void delete(Object objeto);
     public abstract Object list(int codigo);
-    public abstract List listAll();
+    public abstract ArrayList listAll();
 }
