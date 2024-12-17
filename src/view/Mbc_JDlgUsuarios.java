@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import bean.Usuarios;
 import javax.swing.JFrame;
 import tools.Util;
 
@@ -22,7 +23,22 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         Util.habilitar(false, jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, 
                 jTxtEndereco, jTxtBiografia, jTxtCidade, jTxtEstado, jTxtTelefone, jCboStatus,
-                jCboTipo, jBtnConfirmar, jBtnCancelar);
+                jCboTipo, jTxtData, jTxtCep, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
+    }
+    
+    public Usuarios viewBean(){
+        Usuarios usuarios = new Usuarios();
+        usuarios.setIdusuarios(Util.strToInt(jFmtCodigo.getText()));
+        usuarios.setNome(jTxtNome.getText());
+        usuarios.setEmail(jTxtEmail.getText());
+        return usuarios;
+    }
+    
+    public void beanView(Usuarios usuarios) {
+        jFmtCodigo.setText(Util.intToString(usuarios.getIdusuarios()));
+        jTxtNome.setText(usuarios.getNome());
+        jTxtEmail.setText(usuarios.getEmail());
     }
 
     /**
@@ -182,7 +198,7 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
         jLabel13.setText("Status");
 
         jLabel14.setFont(new java.awt.Font("Nexa Heavy", 0, 14)); // NOI18N
-        jLabel14.setText("Tipo de Fornecedor");
+        jLabel14.setText("Tipo de Usuario");
 
         jCboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nacional", "Internacional" }));
         jCboTipo.addActionListener(new java.awt.event.ActionListener() {
@@ -362,7 +378,7 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
         Util.habilitar(true, jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, 
                 jTxtEndereco, jTxtBiografia, jTxtCidade, jTxtEstado, jTxtTelefone, jCboStatus,
-                jCboTipo, jBtnConfirmar, jBtnCancelar);
+                jCboTipo, jTxtData, jTxtCep, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
@@ -370,27 +386,30 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
         Util.habilitar(true, jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, 
                 jTxtEndereco, jTxtBiografia, jTxtCidade, jTxtEstado, jTxtTelefone, jCboStatus,
-                jCboTipo, jBtnConfirmar, jBtnCancelar);
+                jCboTipo, jTxtData, jTxtCep, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisaActionPerformed
-        Mbc_JDlgClientesPesquisa jDlgCliPesq = new Mbc_JDlgClientesPesquisa (null, true);
+        Mbc_JDlgUsuariosPesquisa jDlgCliPesq = new Mbc_JDlgUsuariosPesquisa (null, true);
         jDlgCliPesq.setVisible (true);
     }//GEN-LAST:event_jBtnPesquisaActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         Util.limpar(jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, 
                 jTxtEndereco, jTxtBiografia, jTxtCidade, jTxtEstado, jTxtTelefone, jCboStatus,
-                jCboTipo, jBtnConfirmar, jBtnCancelar);
+                jCboTipo, jTxtData, jTxtCep);
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
         Util.habilitar(false, jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, 
                 jTxtEndereco, jTxtBiografia, jTxtCidade, jTxtEstado, jTxtTelefone, jCboStatus,
-                jCboTipo, jBtnConfirmar, jBtnCancelar);
+                jCboTipo, jTxtData, jTxtCep, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
+        Util.limpar(jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, 
+                jTxtEndereco, jTxtBiografia, jTxtCidade, jTxtEstado, jTxtTelefone, jCboStatus,
+                jCboTipo, jTxtData, jTxtCep);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import bean.Album;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,6 +37,20 @@ public class Mbc_JDlgAlbum extends javax.swing.JFrame {
         }
         jFmtData.setFormatterFactory(new DefaultFormatterFactory(maskData));
        
+    }
+    
+    public Album viewBean(){
+        Album album = new Album();
+        album.setIdalbum(Util.strToInt(jTxtCodigo.getText()));
+        album.setNomeArtista(jTxtNome.getText());
+        album.setTitulo(jTxtTitulo.getText());
+        return album;
+    }
+    
+    public void beanView(Album album) {
+        jTxtCodigo.setText(Util.intToString(album.getIdalbum()));
+        jTxtNome.setText(album.getNomeArtista());
+        jTxtTitulo.setText(album.getTitulo());
     }
     
 
@@ -298,19 +313,20 @@ public class Mbc_JDlgAlbum extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisaActionPerformed
-            
+        Mbc_JDlgUsuariosPesquisa jDlgCliPesq = new Mbc_JDlgUsuariosPesquisa (null, true);
+        jDlgCliPesq.setVisible (true);
     }//GEN-LAST:event_jBtnPesquisaActionPerformed
     
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        Util.limpar(jTxtCodigo, jTxtNome, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem,
-                jBtnConfirmar, jBtnCancelar);
+        Util.limpar(jTxtCodigo, jTxtNome, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem);
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem,
                 jBtnConfirmar, jBtnCancelar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
+        Util.limpar(jTxtCodigo, jTxtNome, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed

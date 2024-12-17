@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import bean.Clientes;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +40,21 @@ public class Mbc_JDlgClientes extends javax.swing.JFrame {
                 jTxtEndereco, jTxtDescricao, jTxtCidade, jTxtEstado, jFmtCep, jTxtTelefone, jCboNivel, jCboStatus,
                 jBtnConfirmar, jBtnCancelar);
     }
+    
+    public Clientes viewBean(){
+        Clientes clientes = new Clientes();
+        clientes.setIdclientes(Util.strToInt(jFmtCodigo.getText()));
+        clientes.setNome(jTxtNome.getText());
+        clientes.setEmail(jFmtCpf.getText());
+        return clientes;
+    }
+    
+    public void beanView(Clientes clientes) {
+        jFmtCodigo.setText(Util.intToString(clientes.getIdclientes()));
+        jTxtNome.setText(clientes.getNome());
+        jFmtCpf.setText(clientes.getCpf());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -400,15 +416,14 @@ public class Mbc_JDlgClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisaActionPerformed
-        Mbc_JDlgClientesPesquisa jDlgCliPesq = new Mbc_JDlgClientesPesquisa (null, true);
+        Mbc_JDlgUsuariosPesquisa jDlgCliPesq = new Mbc_JDlgUsuariosPesquisa (null, true);
         jDlgCliPesq.setVisible (true);
     }//GEN-LAST:event_jBtnPesquisaActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
         Util.limpar(jFmtCodigo, jTxtNome, jTxtEmail, jTxtUser, jPswSenha, jFmtCpf, jFmtNacimento, 
-                jTxtEndereco, jTxtDescricao, jTxtCidade, jTxtEstado, jFmtCep, jTxtTelefone, jCboNivel, jCboStatus,
-                jBtnConfirmar, jBtnCancelar);
+                jTxtEndereco, jTxtDescricao, jTxtCidade, jTxtEstado, jFmtCep, jTxtTelefone, jCboNivel, jCboStatus);
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
@@ -417,6 +432,8 @@ public class Mbc_JDlgClientes extends javax.swing.JFrame {
                 jTxtEndereco, jTxtDescricao, jTxtCidade, jTxtEstado, jFmtCep, jTxtTelefone, jCboNivel, jCboStatus,
                 jBtnConfirmar, jBtnCancelar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
+        Util.limpar(jFmtCodigo, jTxtNome, jTxtEmail, jTxtUser, jPswSenha, jFmtCpf, jFmtNacimento, 
+                jTxtEndereco, jTxtDescricao, jTxtCidade, jTxtEstado, jFmtCep, jTxtTelefone, jCboNivel, jCboStatus);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
@@ -425,6 +442,8 @@ public class Mbc_JDlgClientes extends javax.swing.JFrame {
                 jTxtEndereco, jTxtDescricao, jTxtCidade, jTxtEstado, jFmtCep, jTxtTelefone, jCboNivel, jCboStatus,
                 jBtnConfirmar, jBtnCancelar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
+        Util.limpar(jFmtCodigo, jTxtNome, jTxtEmail, jTxtUser, jPswSenha, jFmtCpf, jFmtNacimento, 
+                jTxtEndereco, jTxtDescricao, jTxtCidade, jTxtEstado, jFmtCep, jTxtTelefone, jCboNivel, jCboStatus);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jFmtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtCodigoActionPerformed

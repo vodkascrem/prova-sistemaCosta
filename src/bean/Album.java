@@ -116,10 +116,6 @@ public class Album  implements java.io.Serializable {
     public void setImagem(String imagem) {
         this.imagem = imagem;
     }
-
-
-
-
 }
 
 

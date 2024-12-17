@@ -37,8 +37,8 @@ public class Mbc_JFrmInicial extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuSair = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuVendas = new javax.swing.JMenuItem();
+        jMenuProdutos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,15 +99,25 @@ public class Mbc_JFrmInicial extends javax.swing.JFrame {
 
         jMenu2.setText("Movimento");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-categories-15.png"))); // NOI18N
-        jMenuItem1.setText("Pedidos");
-        jMenu2.add(jMenuItem1);
+        jMenuVendas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-categories-15.png"))); // NOI18N
+        jMenuVendas.setText("Vendas");
+        jMenuVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuVendasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuVendas);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/produto.png"))); // NOI18N
-        jMenuItem2.setText("Produtos");
-        jMenu2.add(jMenuItem2);
+        jMenuProdutos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/produto.png"))); // NOI18N
+        jMenuProdutos.setText("Produtos");
+        jMenuProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuProdutosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuProdutos);
 
         jMenuBar1.add(jMenu2);
 
@@ -152,6 +162,18 @@ public class Mbc_JFrmInicial extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuSairActionPerformed
 
+    private void jMenuVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendasActionPerformed
+        // TODO add your handling code here:
+        new Mbc_JDlgVendas().setVisible (true);
+        
+    }//GEN-LAST:event_jMenuVendasActionPerformed
+
+    private void jMenuProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProdutosActionPerformed
+        // TODO add your handling code here:
+        Mbc_JDlgVendasProdutos jDlgVendasPr = new Mbc_JDlgVendasProdutos (null, true);
+        jDlgVendasPr.setVisible (true);
+    }//GEN-LAST:event_jMenuProdutosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -194,9 +216,9 @@ public class Mbc_JFrmInicial extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuProdutos;
     private javax.swing.JMenuItem jMenuSair;
+    private javax.swing.JMenuItem jMenuVendas;
     private javax.swing.JMenuItem jMnuAlbum;
     private javax.swing.JMenuItem jMnuCliente;
     private javax.swing.JMenuItem jMnuFornecedor;

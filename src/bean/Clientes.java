@@ -204,7 +204,7 @@ public class Clientes  implements java.io.Serializable {
     }
 
     
-    @Column(name="nivel")
+    @Column(name="nivel" )
     public int getNivel() {
         return this.nivel;
     }
@@ -213,9 +213,21 @@ public class Clientes  implements java.io.Serializable {
         this.nivel = nivel;
     }
 
-
-
-
+    @Override
+    public String toString(){
+    return this.idclientes + "-" + this.nome;
+    }
+    
+    @Override
+    public boolean equals(Object object){
+    if(object instanceof Clientes){
+    Clientes clientes = (Clientes) object;
+    if(clientes.getIdclientes()== this.idclientes){
+    return true;
+    }
+    }
+    return false;
+    }
 }
 
 

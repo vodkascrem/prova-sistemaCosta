@@ -1,20 +1,22 @@
 package view;
 
+import bean.Usuarios;
+
 
 /**
  *
  * @author vodka
  */
-public class Mbc_JDlgClientesPesquisa extends javax.swing.JDialog {
+public class Mbc_JDlgUsuariosPesquisa extends javax.swing.JDialog {
 
-    public Mbc_JDlgClientesPesquisa(java.awt.Frame parent, boolean modal) {
+    public Mbc_JDlgUsuariosPesquisa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Pequisar em Clientes");
+        setTitle("Pequisar em Usuarios");
         setLocationRelativeTo(null);
     }
 
-    public Mbc_JDlgClientesPesquisa() {
+    public Mbc_JDlgUsuariosPesquisa() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -42,6 +44,11 @@ public class Mbc_JDlgClientesPesquisa extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jTable1);
 
         jBtnConcluir.setText("Concluir");
+        jBtnConcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnConcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,10 +74,15 @@ public class Mbc_JDlgClientesPesquisa extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBtnConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConcluirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jBtnConcluirActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Mbc_JDlgClientesPesquisa dialog = new Mbc_JDlgClientesPesquisa(new javax.swing.JFrame(), true);
+                Mbc_JDlgUsuariosPesquisa dialog = new Mbc_JDlgUsuariosPesquisa(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

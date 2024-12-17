@@ -51,13 +51,18 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTxt4" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCboCliente" min="-2" pref="148" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jCbogssClientes" min="-2" pref="148" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jTxt4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTxt5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCboFornecedor" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                          <Component id="jTxt5" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCbogssAlbum" min="-2" pref="158" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -89,10 +94,10 @@
                                   <Component id="jTxt3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jCboCliente" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                      <Component id="jCboFornecedor" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="jCbogssClientes" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="jCbogssAlbum" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jTxt4" min="-2" max="-2" attributes="0"/>
@@ -108,9 +113,9 @@
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jTxt5" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTxt6" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jTxt6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTxt5" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                           </Group>
@@ -200,49 +205,13 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jTxt4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cliente"/>
+        <Property name="text" type="java.lang.String" value="Clientes"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="jCboCliente">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Cliente 1"/>
-            <StringItem index="1" value="Cliente 2"/>
-            <StringItem index="2" value="Cliente 3"/>
-            <StringItem index="3" value="Cliente 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCboClienteActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jTxt5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Fornecedor"/>
+        <Property name="text" type="java.lang.String" value="Album"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="jCboFornecedor">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Fornecedor 1"/>
-            <StringItem index="1" value="Fornecedor 2"/>
-            <StringItem index="2" value="Fornecedor 3"/>
-            <StringItem index="3" value="Fornecedor 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCboFornecedorActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jTxt6">
       <Properties>
@@ -266,6 +235,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Incluir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnIncluirActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBtnAlterar">
       <Properties>
@@ -330,6 +302,28 @@
           <Image iconType="3" name="/img/icons8-remover-15.png"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jCbogssClientes">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;Clientes&gt;()"/>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Clientes&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jCbogssAlbum">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;Clientes&gt;()"/>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Clientes&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

@@ -11,17 +11,17 @@ import javax.swing.JFrame;
  *
  * @author vodka
  */
-public class Mbc_JDlgPedidos extends javax.swing.JFrame {
+public class Mbc_JDlgVendas extends javax.swing.JFrame {
 
     /**
      * Creates new form Mbc_JdlgPedidosProdutos
      */
-    public Mbc_JDlgPedidos() {
+    public Mbc_JDlgVendas() {
         initComponents();
         setTitle("Pedidos Produtos");
     }
 
-    Mbc_JDlgPedidos(Object object, boolean b) {
+    Mbc_JDlgVendas(Object object, boolean b) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -43,8 +43,8 @@ public class Mbc_JDlgPedidos extends javax.swing.JFrame {
         jTxtValor = new javax.swing.JTextField();
         jTxtValor1 = new javax.swing.JTextField();
         jTxt4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBtnCancelar = new javax.swing.JButton();
+        jBtnConfirmar = new javax.swing.JButton();
 
         jFmtCodigo.setFont(new java.awt.Font("Nexa Heavy", 0, 12)); // NOI18N
 
@@ -57,9 +57,9 @@ public class Mbc_JDlgPedidos extends javax.swing.JFrame {
             }
         });
 
-        jTxt1.setText("Produto");
+        jTxt1.setText("Venda");
 
-        jTxt2.setText("Quantidade");
+        jTxt2.setText("Data da venda");
 
         jTxtQuantidade.setFont(new java.awt.Font("Nexa Heavy", 0, 12)); // NOI18N
         jTxtQuantidade.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +68,7 @@ public class Mbc_JDlgPedidos extends javax.swing.JFrame {
             }
         });
 
-        jTxt3.setText("Valor Unitário");
+        jTxt3.setText("Quantidade");
 
         jTxtValor.setFont(new java.awt.Font("Nexa Heavy", 0, 12)); // NOI18N
         jTxtValor.addActionListener(new java.awt.event.ActionListener() {
@@ -86,9 +86,19 @@ public class Mbc_JDlgPedidos extends javax.swing.JFrame {
 
         jTxt4.setText("Total");
 
-        jButton1.setText("Cancelar");
+        jBtnCancelar.setText("Cancelar");
+        jBtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnCancelarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Confirmar");
+        jBtnConfirmar.setText("Confirmar");
+        jBtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnConfirmarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,9 +126,9 @@ public class Mbc_JDlgPedidos extends javax.swing.JFrame {
                         .addContainerGap(29, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBtnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(jBtnCancelar)
                         .addGap(29, 29, 29))))
         );
         layout.setVerticalGroup(
@@ -140,8 +150,8 @@ public class Mbc_JDlgPedidos extends javax.swing.JFrame {
                     .addComponent(jTxtValor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jBtnCancelar)
+                    .addComponent(jBtnConfirmar))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -164,6 +174,16 @@ public class Mbc_JDlgPedidos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtValor1ActionPerformed
 
+    private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jBtnConfirmarActionPerformed
+
+    private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jBtnCancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -181,14 +201,22 @@ public class Mbc_JDlgPedidos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Mbc_JDlgPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Mbc_JDlgVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Mbc_JDlgPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Mbc_JDlgVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Mbc_JDlgPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Mbc_JDlgVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Mbc_JDlgPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Mbc_JDlgVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -201,14 +229,21 @@ public class Mbc_JDlgPedidos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mbc_JDlgPedidos().setVisible(true);
+                Mbc_JDlgVendas dialog = new Mbc_JDlgVendas(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBtnCancelar;
+    private javax.swing.JButton jBtnConfirmar;
     private javax.swing.JComboBox<String> jCboItem;
     private javax.swing.JFormattedTextField jFmtCodigo;
     private javax.swing.JLabel jTxt1;

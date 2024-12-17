@@ -6,7 +6,10 @@ import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,11 +25,11 @@ public class Vendas  implements java.io.Serializable {
 
 
      private int idvendas;
-     private Integer clienteId;
-     private Integer albumId;
+     private Clientes clientes;
+     private Album album;
      private Date dataVenda;
-     private Integer quantidade;
-     private BigDecimal valorTotal;
+     private int quantidade;
+     private double valorTotal;
      private String status;
 
     public Vendas() {
@@ -36,10 +39,10 @@ public class Vendas  implements java.io.Serializable {
     public Vendas(int idvendas) {
         this.idvendas = idvendas;
     }
-    public Vendas(int idvendas, Integer clienteId, Integer albumId, Date dataVenda, Integer quantidade, BigDecimal valorTotal, String status) {
+    public Vendas(int idvendas, int idclientes, int albumId, Date dataVenda, int quantidade, double valorTotal, String status) {
        this.idvendas = idvendas;
-       this.clienteId = clienteId;
-       this.albumId = albumId;
+       this.clientes = clientes;
+       this.album= album;
        this.dataVenda = dataVenda;
        this.quantidade = quantidade;
        this.valorTotal = valorTotal;
@@ -58,24 +61,24 @@ public class Vendas  implements java.io.Serializable {
         this.idvendas = idvendas;
     }
 
-    
-    @Column(name="cliente_id")
-    public Integer getClienteId() {
-        return this.clienteId;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="cliente")
+    public Clientes getClientes() {
+        return this.clientes;
     }
     
-    public void setClienteId(Integer clienteId) {
-        this.clienteId = clienteId;
+    public void setClientes(Clientes clientes) {
+        this.clientes = clientes;
     }
 
-    
-    @Column(name="album_id")
-    public Integer getAlbumId() {
-        return this.albumId;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @Column(name="album")
+    public Album getAlbum() {
+        return this.album;
     }
     
-    public void setAlbumId(Integer albumId) {
-        this.albumId = albumId;
+    public void setAlbum(Album album) {
+        this.album = album;
     }
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -90,21 +93,21 @@ public class Vendas  implements java.io.Serializable {
 
     
     @Column(name="quantidade")
-    public Integer getQuantidade() {
+    public int getQuantidade() {
         return this.quantidade;
     }
     
-    public void setQuantidade(Integer quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 
     
     @Column(name="valor_total", precision=10)
-    public BigDecimal getValorTotal() {
+    public double getValorTotal() {
         return this.valorTotal;
     }
     
-    public void setValorTotal(BigDecimal valorTotal) {
+    public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
     }
 

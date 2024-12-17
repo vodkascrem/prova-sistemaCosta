@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import bean.MbcMusica;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +36,20 @@ public class Mbc_JDlgMusica extends javax.swing.JFrame {
         
         Util.habilitar(false, jTxtCodigo, jCboAdd, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem,
                 jBtnConfirmar, jBtnCancelar);
+    }
+    
+    public MbcMusica viewBean(){
+        MbcMusica musica = new MbcMusica();
+        musica.setMbcIdmusica(Util.strToInt(jTxtCodigo.getText()));
+        musica.setMbcTitulo(jTxtTitulo.getText());
+        musica.setMbcGenero(jTxtGenero.getText());
+        return musica;
+    }
+    
+    public void beanView(MbcMusica musica) {
+        jTxtCodigo.setText(Util.intToString(musica.getMbcIdmusica()));
+        jTxtTitulo.setText(musica.getMbcTitulo());
+        jTxtGenero.setText(musica.getMbcGenero());
     }
 
     /**
@@ -298,14 +313,13 @@ public class Mbc_JDlgMusica extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisaActionPerformed
-       Mbc_JDlgClientesPesquisa jDlgCliPesq = new Mbc_JDlgClientesPesquisa (null, true);
+       Mbc_JDlgUsuariosPesquisa jDlgCliPesq = new Mbc_JDlgUsuariosPesquisa (null, true);
        jDlgCliPesq.setVisible (true);
     }//GEN-LAST:event_jBtnPesquisaActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        Util.limpar(jTxtCodigo, jCboAdd, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem,
-                jBtnConfirmar, jBtnCancelar);
+        Util.limpar(jTxtCodigo, jCboAdd, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem);
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
@@ -313,6 +327,7 @@ public class Mbc_JDlgMusica extends javax.swing.JFrame {
         Util.habilitar(false, jTxtCodigo, jCboAdd, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem,
                 jBtnConfirmar, jBtnCancelar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
+        Util.limpar(jTxtCodigo, jCboAdd, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed

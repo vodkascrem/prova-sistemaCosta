@@ -1,23 +1,50 @@
 package view;
 
-
+import bean.Album;
+import bean.Clientes;
+import bean.Vendas;
+import dao.ClientesDAO;
+import dao.VendasDAO;
+import java.util.ArrayList;
+import tools.Util;
 /**
  *
  * @author vodka
  */
 public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
+    
+    boolean incluir;
+    VendasDAO vendasDAO;
 
     public Mbc_JDlgVendasProdutos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Pequisar em Clientes");
+        setTitle("VendasProdutos");
         setLocationRelativeTo(null);
+        ClientesDAO clientesDAO = new ClientesDAO();
+        ArrayList lista = clientesDAO.listAll();
+        for (Object object : lista) {
+        jCbogssClientes.addItem((Clientes) object);
+    }
     }
 
-    public Mbc_JDlgVendasProdutos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    Mbc_JDlgVendasProdutos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public Vendas viewBean(){
+        Vendas vendas = new Vendas();
+        vendas.setIdvendas(Util.strToInt(jTxtCodigo.getText()));
+        vendas.setClientes((Clientes) jCbogssClientes.getSelectedItem());
+        vendas.setAlbum((Album) jCbogssAlbum.getSelectedItem());
+        vendas.setValorTotal(Util.strtoDouble(jTxtTotal.getText()));
+        return null;
+    }
+    
+    
+    public void beanView(){
+    
+    }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -29,9 +56,7 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
         jTxt3 = new javax.swing.JLabel();
         jTxtData = new javax.swing.JTextField();
         jTxt4 = new javax.swing.JLabel();
-        jCboCliente = new javax.swing.JComboBox<>();
         jTxt5 = new javax.swing.JLabel();
-        jCboFornecedor = new javax.swing.JComboBox<>();
         jTxt6 = new javax.swing.JLabel();
         jTxtTotal = new javax.swing.JTextField();
         jBtnIncluir = new javax.swing.JButton();
@@ -43,6 +68,8 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
         jBtnIncluirLateral = new javax.swing.JButton();
         jBtnAlterarLateral = new javax.swing.JButton();
         jBtnExcluirLateral = new javax.swing.JButton();
+        jCbogssClientes = new javax.swing.JComboBox<Clientes>();
+        jCbogssAlbum = new javax.swing.JComboBox<Clientes>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -77,23 +104,9 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
             }
         });
 
-        jTxt4.setText("Cliente");
+        jTxt4.setText("Clientes");
 
-        jCboCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente 1", "Cliente 2", "Cliente 3", "Cliente 4" }));
-        jCboCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCboClienteActionPerformed(evt);
-            }
-        });
-
-        jTxt5.setText("Fornecedor");
-
-        jCboFornecedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fornecedor 1", "Fornecedor 2", "Fornecedor 3", "Fornecedor 4" }));
-        jCboFornecedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCboFornecedorActionPerformed(evt);
-            }
-        });
+        jTxt5.setText("Album");
 
         jTxt6.setText("Total");
 
@@ -106,6 +119,11 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
 
         jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add1.png"))); // NOI18N
         jBtnIncluir.setText("Incluir");
+        jBtnIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnIncluirActionPerformed(evt);
+            }
+        });
 
         jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/editar.png"))); // NOI18N
         jBtnAlterar.setText("Alterar");
@@ -162,12 +180,15 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
                             .addComponent(jTxtData, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTxt4)
-                            .addComponent(jCboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jCbogssClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jTxt4)
+                                .addGap(120, 120, 120)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTxt5)
-                            .addComponent(jCboFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jCbogssAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTxt6)
@@ -192,9 +213,9 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
                                     .addComponent(jTxt3)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jCboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jCboFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(2, 2, 2))
+                                        .addComponent(jCbogssClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jCbogssAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(1, 1, 1))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jTxt4)
                                     .addGap(30, 30, 30))
@@ -205,9 +226,9 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
                                         .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jTxtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTxt5)
-                                    .addComponent(jTxt6))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTxt6)
+                                    .addComponent(jTxt5))
                                 .addGap(30, 30, 30))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
@@ -243,23 +264,25 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtDataActionPerformed
 
-    private void jCboClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCboClienteActionPerformed
-
-    private void jCboFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboFornecedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCboFornecedorActionPerformed
-
     private void jTxtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtTotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtTotalActionPerformed
 
     private void jBtnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisaActionPerformed
         // TODO add your handling code here:
-        new Mbc_JDlgPedidos().setVisible (true);
+        new Mbc_JDlgVendas().setVisible (true);
     }//GEN-LAST:event_jBtnPesquisaActionPerformed
 
+    private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
+        // TODO add your handling code here:
+        incluir = true;
+        if (incluir = true){
+        vendasDAO.insert(viewBean());
+        } else {
+        vendasDAO.update(viewBean());
+    }//GEN-LAST:event_jBtnIncluirActionPerformed
+    }
+    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -285,8 +308,8 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
     private javax.swing.JButton jBtnIncluir;
     private javax.swing.JButton jBtnIncluirLateral;
     private javax.swing.JButton jBtnPesquisa;
-    private javax.swing.JComboBox<String> jCboCliente;
-    private javax.swing.JComboBox<String> jCboFornecedor;
+    private javax.swing.JComboBox<Clientes> jCbogssAlbum;
+    private javax.swing.JComboBox<Clientes> jCbogssClientes;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel jTxt2;
@@ -298,4 +321,5 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
     private javax.swing.JTextField jTxtData;
     private javax.swing.JTextField jTxtTotal;
     // End of variables declaration//GEN-END:variables
+
 }
