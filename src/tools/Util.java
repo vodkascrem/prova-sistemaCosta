@@ -57,13 +57,4 @@ public class Util {
    public static Date stringTodate (String cad) {
    return null;
    }
-   
-   public static void mostrar(String mensagem){
-       JOptionPane.showMessageDialog(null, mensagem);
-   }
-   
-   public static boolean perguntar(String mensagem){
-   //JOptionPane.showInputDialog(mensagem);
-       return false;
-   }
 }

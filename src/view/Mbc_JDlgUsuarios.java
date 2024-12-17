@@ -5,6 +5,7 @@
 package view;
 import bean.Usuarios;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import tools.Util;
 
 /**
@@ -396,9 +397,12 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnPesquisaActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
+        JOptionPane.showInputDialog("Deseja Excluir?");
+    
         Util.limpar(jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, 
                 jTxtEndereco, jTxtBiografia, jTxtCidade, jTxtEstado, jTxtTelefone, jCboStatus,
                 jCboTipo, jTxtData, jTxtCep);
+        
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
@@ -415,7 +419,7 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         Util.habilitar(false, jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, 
                 jTxtEndereco, jTxtBiografia, jTxtCidade, jTxtEstado, jTxtTelefone, jCboStatus,
-                jCboTipo, jBtnConfirmar, jBtnCancelar);
+                jCboTipo, jTxtData, jTxtCep, jBtnConfirmar, jBtnCancelar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 

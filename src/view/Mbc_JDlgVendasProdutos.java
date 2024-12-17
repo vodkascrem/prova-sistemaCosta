@@ -24,7 +24,7 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
         ClientesDAO clientesDAO = new ClientesDAO();
         ArrayList lista = clientesDAO.listAll();
         for (Object object : lista) {
-        jCbogssClientes.addItem((Clientes) object);
+        jCboClientes.addItem((Clientes) object);
     }
     }
 
@@ -35,15 +35,16 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
     public Vendas viewBean(){
         Vendas vendas = new Vendas();
         vendas.setIdvendas(Util.strToInt(jTxtCodigo.getText()));
-        vendas.setClientes((Clientes) jCbogssClientes.getSelectedItem());
-        vendas.setAlbum((Album) jCbogssAlbum.getSelectedItem());
+        vendas.setClientes((Clientes) jCboClientes.getSelectedItem());
+        vendas.setAlbum((Album) jCboAlbum.getSelectedItem());
         vendas.setValorTotal(Util.strtoDouble(jTxtTotal.getText()));
         return null;
     }
     
     
-    public void beanView(){
-    
+    public void beanView(Vendas vendas) {
+        jTxtCodigo.setText (Util.intToString (vendas.getIdvendas()));
+        jTxtTotal.setText (Util.doubleToString(vendas.getValorTotal()));
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -68,8 +69,8 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
         jBtnIncluirLateral = new javax.swing.JButton();
         jBtnAlterarLateral = new javax.swing.JButton();
         jBtnExcluirLateral = new javax.swing.JButton();
-        jCbogssClientes = new javax.swing.JComboBox<Clientes>();
-        jCbogssAlbum = new javax.swing.JComboBox<Clientes>();
+        jCboClientes = new javax.swing.JComboBox<Clientes>();
+        jCboAlbum = new javax.swing.JComboBox<Clientes>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -181,14 +182,14 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jCbogssClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jCboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jTxt4)
                                 .addGap(120, 120, 120)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTxt5)
-                            .addComponent(jCbogssAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jCboAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTxt6)
@@ -213,8 +214,8 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
                                     .addComponent(jTxt3)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jCbogssClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jCbogssAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jCboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jCboAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(1, 1, 1))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jTxt4)
@@ -308,8 +309,8 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JDialog {
     private javax.swing.JButton jBtnIncluir;
     private javax.swing.JButton jBtnIncluirLateral;
     private javax.swing.JButton jBtnPesquisa;
-    private javax.swing.JComboBox<Clientes> jCbogssAlbum;
-    private javax.swing.JComboBox<Clientes> jCbogssClientes;
+    private javax.swing.JComboBox<Clientes> jCboAlbum;
+    private javax.swing.JComboBox<Clientes> jCboClientes;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel jTxt2;
