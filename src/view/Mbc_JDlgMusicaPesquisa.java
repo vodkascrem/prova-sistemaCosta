@@ -1,7 +1,7 @@
 package view;
 
-import bean.Usuarios;
-import dao.UsuariosDAO;
+import bean.MbcMusica;
+import dao.MusicaDAO;
 import java.util.List;
 
 
@@ -9,29 +9,29 @@ import java.util.List;
  *
  * @author vodka
  */
-public class Mbc_JDlgUsuariosPesquisa extends javax.swing.JDialog {
+public class Mbc_JDlgMusicaPesquisa extends javax.swing.JDialog {
 
-    private Mbc_JDlgUsuarios jDlgUsuarios;
-    ControllerUsuarios controllerUsuarios;
+    private Mbc_JDlgMusica jDlgMusica;
+    ControllerMusica controllerMusica;
 
-    public Mbc_JDlgUsuariosPesquisa(java.awt.Frame parent, boolean modal) {
+    public Mbc_JDlgMusicaPesquisa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Pequisar em Usuarios");
+        setTitle("Pequisar em Musica");
         setLocationRelativeTo(null);
         
-        ControllerUsuarios controllerUsuarios = new ControllerUsuarios();
-        UsuariosDAO usuariosDAO = new UsuariosDAO();
-        List lista = usuariosDAO.listAll();
-        controllerUsuarios.setLista(lista);
-        jTable1.setModel(controllerUsuarios); 
+        ControllerMusica controllerMusica = new ControllerMusica();
+        MusicaDAO musicaDAO = new MusicaDAO();
+        List lista = musicaDAO.listAll();
+        controllerMusica(lista);
+        jTable1.setModel(controllerMusica); 
     }
     
-    public void setTelaAnterior(Mbc_JDlgUsuarios jDlgUsuarios){
-        this.jDlgUsuarios = jDlgUsuarios;
+    public void setTelaAnterior(Mbc_JDlgMusica jDlgMusica){
+        this.jDlgMusica = jDlgMusica;
     }
 
-    public Mbc_JDlgUsuariosPesquisa() {
+    public Mbc_JDlgMusicaPesquisa() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -92,8 +92,8 @@ public class Mbc_JDlgUsuariosPesquisa extends javax.swing.JDialog {
     private void jBtnConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConcluirActionPerformed
         // TODO add your handling code here:
         int rowSel = jTable1.getSelectedRow();
-        Usuarios usuarios = controllerUsuarios.getBean(rowSel);
-        jDlgUsuarios.beanView(usuarios);
+        MbcMusica mbcMusica = controllerMusica.getBean(rowSel);
+        jDlgMusica.beanView(mbcMusica);
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jBtnConcluirActionPerformed
@@ -101,7 +101,7 @@ public class Mbc_JDlgUsuariosPesquisa extends javax.swing.JDialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Mbc_JDlgUsuariosPesquisa dialog = new Mbc_JDlgUsuariosPesquisa(new javax.swing.JFrame(), true);
+                Mbc_JDlgMusicaPesquisa dialog = new Mbc_JDlgMusicaPesquisa(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -118,4 +118,8 @@ public class Mbc_JDlgUsuariosPesquisa extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void controllerMusica(List lista) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

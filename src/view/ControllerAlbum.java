@@ -1,12 +1,12 @@
 package view;
-import bean.Usuarios;
+import bean.Album;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 /**
  *
  * @author vodka
  */
-public class ControllerUsuarios extends AbstractTableModel {
+public class ControllerAlbum extends AbstractTableModel {
 
     private List lista;
     
@@ -14,8 +14,8 @@ public class ControllerUsuarios extends AbstractTableModel {
         this.lista = lista;
     }
     
-    public Usuarios getBean(int rowIndex){
-        return (Usuarios) lista.get(rowIndex);
+    public Album getBean(int rowIndex){
+        return (Album) lista.get(rowIndex);
     }
     
     @Override
@@ -30,18 +30,18 @@ public class ControllerUsuarios extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Usuarios usuarios = (Usuarios) lista.get(rowIndex);
+        Album album = (Album) lista.get(rowIndex);
         if (columnIndex  == 0) {
-            return usuarios.getIdusuarios();
+            return album.getIdalbum();
         } 
         if (columnIndex  == 1) {
-            return usuarios.getNome();
+            return album.getTitulo();
         } 
         if (columnIndex  == 2) {
-            return usuarios.getCnpj();
+            return album.getNomeArtista();
         } 
         
-        return usuarios;
+        return album;
         
     }
     
@@ -51,15 +51,11 @@ public class ControllerUsuarios extends AbstractTableModel {
             return "Código";
         }
         if(columnIndex == 1){
-            return "Nome";
+            return "Titulo";
         }
         if(columnIndex == 2){
-            return "CPF";
+            return "Nome";
         }
             return "";
-    }
-
-    void setList(List lista) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

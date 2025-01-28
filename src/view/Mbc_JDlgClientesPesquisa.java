@@ -1,7 +1,7 @@
 package view;
 
-import bean.Usuarios;
-import dao.UsuariosDAO;
+import bean.Clientes;
+import dao.ClientesDAO;
 import java.util.List;
 
 
@@ -9,29 +9,29 @@ import java.util.List;
  *
  * @author vodka
  */
-public class Mbc_JDlgUsuariosPesquisa extends javax.swing.JDialog {
+public class Mbc_JDlgClientesPesquisa extends javax.swing.JDialog {
 
-    private Mbc_JDlgUsuarios jDlgUsuarios;
-    ControllerUsuarios controllerUsuarios;
+    private Mbc_JDlgClientes jDlgClientes;
+    ControllerClientes controllerClientes;
 
-    public Mbc_JDlgUsuariosPesquisa(java.awt.Frame parent, boolean modal) {
+    public Mbc_JDlgClientesPesquisa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Pequisar em Usuarios");
+        setTitle("Pequisar em Clientes");
         setLocationRelativeTo(null);
         
-        ControllerUsuarios controllerUsuarios = new ControllerUsuarios();
-        UsuariosDAO usuariosDAO = new UsuariosDAO();
-        List lista = usuariosDAO.listAll();
-        controllerUsuarios.setLista(lista);
-        jTable1.setModel(controllerUsuarios); 
+        ControllerClientes controllerClientes = new ControllerClientes();
+        ClientesDAO clientesDAO = new ClientesDAO();
+        List lista = clientesDAO.listAll();
+        controllerClientes.setLista(lista);
+        jTable1.setModel(controllerClientes); 
     }
     
-    public void setTelaAnterior(Mbc_JDlgUsuarios jDlgUsuarios){
-        this.jDlgUsuarios = jDlgUsuarios;
+    public void setTelaAnterior(Mbc_JDlgClientes jDlgClientes){
+        this.jDlgClientes = jDlgClientes;
     }
 
-    public Mbc_JDlgUsuariosPesquisa() {
+    public Mbc_JDlgClientesPesquisa() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -92,8 +92,8 @@ public class Mbc_JDlgUsuariosPesquisa extends javax.swing.JDialog {
     private void jBtnConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConcluirActionPerformed
         // TODO add your handling code here:
         int rowSel = jTable1.getSelectedRow();
-        Usuarios usuarios = controllerUsuarios.getBean(rowSel);
-        jDlgUsuarios.beanView(usuarios);
+        Clientes clientes = controllerClientes.getBean(rowSel);
+        jDlgClientes.beanView(clientes);
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jBtnConcluirActionPerformed
@@ -101,7 +101,7 @@ public class Mbc_JDlgUsuariosPesquisa extends javax.swing.JDialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Mbc_JDlgUsuariosPesquisa dialog = new Mbc_JDlgUsuariosPesquisa(new javax.swing.JFrame(), true);
+                Mbc_JDlgClientesPesquisa dialog = new Mbc_JDlgClientesPesquisa(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

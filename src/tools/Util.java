@@ -55,7 +55,8 @@ public class Util {
    }
    
    public static String dateTostring (Date date) {
-        return "";
+        SimpleDateFormat formato = new SimpleDateFormat("dd/mm/yyyy");
+        return formato.format(date);
    }
    
    public static Date stringTodate (String cad) {
@@ -64,8 +65,14 @@ public class Util {
             try  {
                 resp = formato.parse(cad);
             } catch (ParseException ex) {
-                Logger.getLogger (Util.class.getName()).log(Level.SEVERE, null);
+                return null;
             }
             return resp;
    }
+   
+   public static void mostrar (String mensagem){
+       JOptionPane.showMessageDialog(null, mensagem);
+   }
+   
+   
 }
