@@ -19,19 +19,20 @@ public class Mbc_JDlgUsuariosPesquisa extends javax.swing.JDialog {
         initComponents();
         setTitle("Pequisar em Usuarios");
         setLocationRelativeTo(null);
-        
-        ControllerUsuarios controllerUsuarios = new ControllerUsuarios();
+
+        controllerUsuarios = new ControllerUsuarios(); // Inicializa a variável de classe
         UsuariosDAO usuariosDAO = new UsuariosDAO();
         List lista = usuariosDAO.listAll();
         controllerUsuarios.setLista(lista);
-        jTable1.setModel(controllerUsuarios); 
+        jTable1.setModel(controllerUsuarios); // Agora usa a variável de classe
     }
+
     
     public void setTelaAnterior(Mbc_JDlgUsuarios jDlgUsuarios){
         this.jDlgUsuarios = jDlgUsuarios;
     }
 
-    public Mbc_JDlgUsuariosPesquisa() {
+        public Mbc_JDlgUsuariosPesquisa() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -91,11 +92,26 @@ public class Mbc_JDlgUsuariosPesquisa extends javax.swing.JDialog {
 
     private void jBtnConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConcluirActionPerformed
         // TODO add your handling code here:
-        int rowSel = jTable1.getSelectedRow();
-        Usuarios usuarios = controllerUsuarios.getBean(rowSel);
-        jDlgUsuarios.beanView(usuarios);
-        this.setVisible(false);
-        this.dispose();
+        if (controllerUsuarios == null) {
+            System.out.println("controllerUsuarios não foi inicializado.");
+            return;
+        }
+
+        if (jTable1.getModel() == null) {
+            System.out.println("Modelo da tabela não foi configurado.");
+            return;
+        }
+        
+        
+        int rowSel= jTable1.getSelectedRow(); // Obtém o objeto Usuarios da linha selecionada
+        Usuarios usuarios = controllerUsuarios.getBean(rowSel); // Chama o método de atualização na tela principal
+        jDlgUsuarios.beanView(usuarios); 
+        
+        // Torna a janela de pesquisa invisível após a seleção
+        jDlgUsuarios.setVisible(true); // Certifique-se de que esta ação está fazendo a janela principal visível novamente
+
+        // Fecha a janela de pesquisa
+        this.setVisible(false);  // Fecha a janela de pesquisa (Mbc_JDlgUsuariosPesquisa)
     }//GEN-LAST:event_jBtnConcluirActionPerformed
 
     public static void main(String args[]) {

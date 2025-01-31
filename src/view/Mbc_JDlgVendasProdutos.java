@@ -5,6 +5,7 @@
  */
 package view;
 
+import bean.VendasProdutos;
 import javax.swing.JFrame;
 
 /**
@@ -12,6 +13,9 @@ import javax.swing.JFrame;
  * @author vodka
  */
 public class Mbc_JDlgVendasProdutos extends javax.swing.JFrame {
+private Mbc_JDlgVendas jDlgVendas;
+VendasProdutos vendasProdutos;
+int numVenda;
 
     /**
      * Creates new form Mbc_JdlgPedidosProdutos
@@ -35,7 +39,7 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JFrame {
     private void initComponents() {
 
         jFmtCodigo = new javax.swing.JFormattedTextField();
-        jCboItem = new javax.swing.JComboBox<>();
+        jCboVenda = new javax.swing.JComboBox<>();
         jTxt1 = new javax.swing.JLabel();
         jTxt2 = new javax.swing.JLabel();
         jTxtQuantidade = new javax.swing.JTextField();
@@ -50,10 +54,10 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jCboItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jCboItem.addActionListener(new java.awt.event.ActionListener() {
+        jCboVenda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCboVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCboItemActionPerformed(evt);
+                jCboVendaActionPerformed(evt);
             }
         });
 
@@ -109,7 +113,7 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jCboItem, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCboVenda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,7 +141,7 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jTxt1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCboItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCboVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTxt2)
@@ -158,9 +162,9 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCboItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboItemActionPerformed
+    private void jCboVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboVendaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCboItemActionPerformed
+    }//GEN-LAST:event_jCboVendaActionPerformed
 
     private void jTxtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtQuantidadeActionPerformed
         // TODO add your handling code here:
@@ -292,7 +296,7 @@ public class Mbc_JDlgVendasProdutos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCancelar;
     private javax.swing.JButton jBtnConfirmar;
-    private javax.swing.JComboBox<String> jCboItem;
+    private javax.swing.JComboBox<String> jCboVenda;
     private javax.swing.JFormattedTextField jFmtCodigo;
     private javax.swing.JLabel jTxt1;
     private javax.swing.JLabel jTxt2;

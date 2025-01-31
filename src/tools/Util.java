@@ -40,7 +40,7 @@ public class Util {
     
    public static int strToInt(String cad) {
         return Integer.valueOf(cad);
-    }
+   }
     
    public static String intToString(int num) {
         return String.valueOf(num);
@@ -61,17 +61,21 @@ public class Util {
    
    public static Date stringTodate (String cad) {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-            Date resp = null;
-            try  {
-                resp = formato.parse(cad);
-            } catch (ParseException ex) {
-                return null;
-            }
-            return resp;
+        Date resp = null;
+        try  {
+            resp = formato.parse(cad);
+        } catch (ParseException ex) {
+            return null;
+        }
+        return resp;
    }
    
-   public static void mostrar (String mensagem){
-       JOptionPane.showMessageDialog(null, mensagem);
+   public static boolean perguntar (String pergunta){
+       return JOptionPane.showConfirmDialog(null, pergunta, "", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
+   }
+   
+   public static void mensagem(String msg){
+       JOptionPane.showMessageDialog(null, msg);
    }
    
    

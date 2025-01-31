@@ -4,6 +4,7 @@
  */
 package view;
 import bean.Clientes;
+import dao.ClientesDAO;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +18,10 @@ import tools.Util;
  */
 public class Mbc_JDlgClientes extends javax.swing.JFrame {
     
+    boolean incluindo;
     private MaskFormatter maskCpf,maskData;
+    private ClientesDAO clientesDAO;
+    public Clientes clientes;
     /**
      * Creates new form TelaUsuario
      */
@@ -43,16 +47,38 @@ public class Mbc_JDlgClientes extends javax.swing.JFrame {
     
     public Clientes viewBean(){
         Clientes clientes = new Clientes();
+        
         clientes.setIdclientes(Util.strToInt(jFmtCodigo.getText()));
         clientes.setNome(jTxtNome.getText());
-        clientes.setEmail(jFmtCpf.getText());
+        clientes.setEmail(jTxtEmail.getText());
+        clientes.setUsername(jTxtUser.getText());
+        clientes.setSenha(jPswSenha.getText());
+        clientes.setCpf(jFmtCpf.getText());
+        clientes.setEndereco(jTxtEndereco.getText());
+        clientes.setCidade(jTxtCidade.getText());
+        clientes.setEstado(jTxtEstado.getText());
+        clientes.setCep(jFmtCep.getText());
+        clientes.setTelefone(jTxtTelefone.getText());
+        clientes.setNivel(jCboNivel.getSelectedIndex());
+        clientes.setStatus(jCboStatus.getSelectedIndex());
+        
         return clientes;
     }
     
     public void beanView(Clientes clientes) {
         jFmtCodigo.setText(Util.intToString(clientes.getIdclientes()));
         jTxtNome.setText(clientes.getNome());
+        jTxtEmail.setText(clientes.getEmail());
+        jTxtUser.setText(clientes.getUsername());
+        jPswSenha.setText(clientes.getSenha());
         jFmtCpf.setText(clientes.getCpf());
+        jTxtEndereco.setText(clientes.getEndereco());
+        jTxtCidade.setText(clientes.getCidade());
+        jTxtEstado.setText(clientes.getEstado());
+        jFmtCep.setText(clientes.getCep());
+        jTxtTelefone.setText(clientes.getTelefone());
+        jCboNivel.setSelectedIndex(clientes.getNivel());
+        jCboStatus.setSelectedIndex(clientes.getStatus());
     }
     
     /**
@@ -405,29 +431,51 @@ public class Mbc_JDlgClientes extends javax.swing.JFrame {
                 jTxtEndereco, jTxtDescricao, jTxtCidade, jTxtEstado, jFmtCep, jTxtTelefone, jCboNivel, jCboStatus,
                 jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
+
+        jFmtCodigo.grabFocus();
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
         Util.habilitar(true, jFmtCodigo, jTxtNome, jTxtEmail, jTxtUser, jPswSenha, jFmtCpf, jFmtNacimento, 
                 jTxtEndereco, jTxtDescricao, jTxtCidade, jTxtEstado, jFmtCep, jTxtTelefone, jCboNivel, jCboStatus,
-                jBtnConfirmar, jBtnCancelar);
+                jBtnConfirmar, jBtnCancelar); 
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisaActionPerformed
-        Mbc_JDlgUsuariosPesquisa jDlgCliPesq = new Mbc_JDlgUsuariosPesquisa (null, true);
+        Mbc_JDlgClientesPesquisa jDlgCliPesq = new Mbc_JDlgClientesPesquisa (null, true);
+        jDlgCliPesq.setTelaAnterior(this);
         jDlgCliPesq.setVisible (true);
     }//GEN-LAST:event_jBtnPesquisaActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
+        System.out.println("Código: " + jFmtCodigo.getText());  // Verificando o valor do campo
+
+        
+        Util.habilitar(false, jFmtCodigo, jTxtNome, jTxtEmail, jTxtUser, jPswSenha, jFmtCpf, jFmtNacimento, 
+                jTxtEndereco, jTxtDescricao, jTxtCidade, jTxtEstado, jFmtCep, jTxtTelefone, jCboNivel, jCboStatus,
+                jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
         Util.limpar(jFmtCodigo, jTxtNome, jTxtEmail, jTxtUser, jPswSenha, jFmtCpf, jFmtNacimento, 
                 jTxtEndereco, jTxtDescricao, jTxtCidade, jTxtEstado, jFmtCep, jTxtTelefone, jCboNivel, jCboStatus);
+
+        if (Util.perguntar("Deseja excluir?") == true) {
+            
+            clientes = viewBean();
+            clientesDAO = new ClientesDAO();
+            clientesDAO.delete(clientes);
+            Util.mensagem("Registro Excluído com sucesso");
+        }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
+        ClientesDAO clientesDAO = new ClientesDAO();
+        Clientes clientes = viewBean();
+        clientesDAO.insert(clientes);
+        
         Util.habilitar(false, jFmtCodigo, jTxtNome, jTxtEmail, jTxtUser, jPswSenha, jFmtCpf, jFmtNacimento, 
                 jTxtEndereco, jTxtDescricao, jTxtCidade, jTxtEstado, jFmtCep, jTxtTelefone, jCboNivel, jCboStatus,
                 jBtnConfirmar, jBtnCancelar);

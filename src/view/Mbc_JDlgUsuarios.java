@@ -4,6 +4,7 @@
  */
 package view;
 import bean.Usuarios;
+import dao.UsuariosDAO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import tools.Util;
@@ -16,23 +17,41 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
     /**
      * Creates new form TelaUsuario
      */
+    
+    
+    private boolean incluindo;
+    public Usuarios usuarios;
+    private UsuariosDAO usuariosDAO;
+    
     public Mbc_JDlgUsuarios() {
         initComponents();
         setTitle("Usuarios");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Fecha apenas este JFrame
-        
         setLocationRelativeTo(null);
-        Util.habilitar(false, jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, 
-                jTxtEndereco, jTxtBiografia, jTxtCidade, jTxtEstado, jTxtTelefone, jCboStatus,
-                jCboTipo, jTxtData, jTxtCep, jBtnConfirmar, jBtnCancelar);
-        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
-    }
-    
+        
+        Util.habilitar(false, jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, jTxtTelefone, 
+                    jTxtEndereco, jTxtCidade, jTxtEstado, jTxtCep, jTxtBiografia, jCboStatus, jCboTipo, jTxtData,
+                    jBtnConfirmar, jBtnCancelar);
+        Util.limpar();
+        
+        }
+            
     public Usuarios viewBean(){
         Usuarios usuarios = new Usuarios();
+
         usuarios.setIdusuarios(Util.strToInt(jFmtCodigo.getText()));
         usuarios.setNome(jTxtNome.getText());
         usuarios.setEmail(jTxtEmail.getText());
+        usuarios.setCnpj(jTxtCnpj.getText());
+        usuarios.setSenha(jPswSenha.getText());
+        usuarios.setTelefone(jTxtTelefone.getText());
+        usuarios.setEndereco(jTxtEndereco.getText());
+        usuarios.setCidade(jTxtCidade.getText());
+        usuarios.setEstado(jTxtEstado.getText());
+        usuarios.setCep(jTxtCep.getText());
+        usuarios.setDescricao(jTxtBiografia.getText());
+        usuarios.setStatus(jCboStatus.getSelectedIndex());
+        usuarios.setTipoFornecedor(jCboTipo.getSelectedIndex());
         return usuarios;
     }
     
@@ -40,6 +59,16 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
         jFmtCodigo.setText(Util.intToString(usuarios.getIdusuarios()));
         jTxtNome.setText(usuarios.getNome());
         jTxtEmail.setText(usuarios.getEmail());
+        jTxtCnpj.setText(usuarios.getCnpj());
+        jPswSenha.setText(usuarios.getSenha());
+        jTxtTelefone.setText(usuarios.getTelefone());
+        jTxtEndereco.setText(usuarios.getEndereco());
+        jTxtCidade.setText(usuarios.getCidade());
+        jTxtEstado.setText(usuarios.getEstado());
+        jTxtCep.setText(usuarios.getCep());
+        jTxtBiografia.setText(usuarios.getDescricao());
+        jCboStatus.setSelectedIndex(usuarios.getStatus());
+        jCboTipo.setSelectedIndex(usuarios.getTipoFornecedor());
     }
 
     /**
@@ -73,7 +102,6 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
         jTxtCnpj = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jFmtCodigo = new javax.swing.JFormattedTextField();
         jTxtTelefone = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTxtEndereco = new javax.swing.JTextField();
@@ -89,6 +117,7 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jCboTipo = new javax.swing.JComboBox<>();
         jCboStatus = new javax.swing.JComboBox<>();
+        jFmtCodigo = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -215,6 +244,13 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
             }
         });
 
+        jFmtCodigo.setFont(new java.awt.Font("Nexa Heavy", 0, 12)); // NOI18N
+        jFmtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFmtCodigoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -223,15 +259,6 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jFmtCodigo, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTxtNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jTxtCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,7 +307,16 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jBtnPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBtnPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jFmtCodigo, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTxtNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
+                        .addGap(57, 57, 57)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jTxtCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -289,7 +325,7 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFmtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jFmtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
@@ -358,7 +394,7 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
                         .addComponent(jBtnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jBtnPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -377,50 +413,71 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, 
-                jTxtEndereco, jTxtBiografia, jTxtCidade, jTxtEstado, jTxtTelefone, jCboStatus,
-                jCboTipo, jTxtData, jTxtCep, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, jTxtTelefone, 
+                    jTxtEndereco, jTxtCidade, jTxtEstado, jTxtCep, jTxtBiografia, jCboStatus, jCboTipo, jTxtData,
+                    jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
+
+        jFmtCodigo.grabFocus();
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        // TODO add your handling code here:
-        Util.habilitar(true, jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, 
-                jTxtEndereco, jTxtBiografia, jTxtCidade, jTxtEstado, jTxtTelefone, jCboStatus,
-                jCboTipo, jTxtData, jTxtCep, jBtnConfirmar, jBtnCancelar);
+    // Verificar se o usuário foi selecionado ou pesquisado antes de alterar
+        Util.habilitar(true, jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, jTxtTelefone, 
+                jTxtEndereco, jTxtCidade, jTxtEstado, jTxtCep, jTxtBiografia, jCboStatus, jCboTipo, jTxtData,
+                jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
+
+        
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisaActionPerformed
-        Mbc_JDlgUsuariosPesquisa jDlgCliPesq = new Mbc_JDlgUsuariosPesquisa (null, true);
-        jDlgCliPesq.setVisible (true);
+        Mbc_JDlgUsuariosPesquisa jDlgUsuPesq = new Mbc_JDlgUsuariosPesquisa (null, true);
+        jDlgUsuPesq.setTelaAnterior(this);
+        jDlgUsuPesq.setVisible (true);
     }//GEN-LAST:event_jBtnPesquisaActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-        JOptionPane.showInputDialog("Deseja Excluir?");
-    
-        Util.limpar(jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, 
-                jTxtEndereco, jTxtBiografia, jTxtCidade, jTxtEstado, jTxtTelefone, jCboStatus,
-                jCboTipo, jTxtData, jTxtCep);
+        System.out.println("Código: " + jFmtCodigo.getText());  // Verificando o valor do campo
+
+        
+        Util.habilitar(false, jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, jTxtTelefone, 
+                    jTxtEndereco, jTxtCidade, jTxtEstado, jTxtCep, jTxtBiografia, jCboStatus, jCboTipo, jTxtData,
+                    jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
+        Util.limpar(jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, jTxtTelefone, 
+                    jTxtEndereco, jTxtCidade, jTxtEstado, jTxtCep, jTxtBiografia, jCboStatus, jCboTipo, jTxtData);
+
+        if (Util.perguntar("Deseja excluir?") == true) {
+            
+            usuarios = viewBean();
+            usuariosDAO = new UsuariosDAO();
+            usuariosDAO.delete(usuarios);
+            Util.mensagem("Registro Excluído com sucesso");
+        }
         
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-        // TODO add your handling code here:
-        Util.habilitar(false, jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, 
-                jTxtEndereco, jTxtBiografia, jTxtCidade, jTxtEstado, jTxtTelefone, jCboStatus,
-                jCboTipo, jTxtData, jTxtCep, jBtnConfirmar, jBtnCancelar);
+        UsuariosDAO usuariosDAO = new UsuariosDAO();
+        Usuarios usuarios = viewBean();
+        usuariosDAO.insert(usuarios);
+        
+        Util.habilitar(false, jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, jTxtTelefone, 
+                    jTxtEndereco, jTxtCidade, jTxtEstado, jTxtCep, jTxtBiografia, jCboStatus, jCboTipo, jTxtData,
+                    jBtnConfirmar, jBtnCancelar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
-        Util.limpar(jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, 
-                jTxtEndereco, jTxtBiografia, jTxtCidade, jTxtEstado, jTxtTelefone, jCboStatus,
-                jCboTipo, jTxtData, jTxtCep);
+        Util.limpar(jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, jTxtTelefone, 
+                    jTxtEndereco, jTxtCidade, jTxtEstado, jTxtCep, jTxtBiografia, jCboStatus, jCboTipo, jTxtData);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-        Util.habilitar(false, jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, 
-                jTxtEndereco, jTxtBiografia, jTxtCidade, jTxtEstado, jTxtTelefone, jCboStatus,
-                jCboTipo, jTxtData, jTxtCep, jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(false, jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, jTxtTelefone, 
+                    jTxtEndereco, jTxtCidade, jTxtEstado, jTxtCep, jTxtBiografia, jCboStatus, jCboTipo, jTxtData,
+                    jBtnConfirmar, jBtnCancelar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
+        Util.limpar(jFmtCodigo, jTxtNome, jTxtEmail, jTxtCnpj, jPswSenha, jTxtTelefone, 
+                    jTxtEndereco, jTxtCidade, jTxtEstado, jTxtCep, jTxtBiografia, jCboStatus, jCboTipo, jTxtData);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jCboTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboTipoActionPerformed
@@ -430,6 +487,10 @@ public class Mbc_JDlgUsuarios extends javax.swing.JFrame {
     private void jCboStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboStatusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCboStatusActionPerformed
+
+    private void jFmtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFmtCodigoActionPerformed
 
     /**
      * @param args the command line arguments

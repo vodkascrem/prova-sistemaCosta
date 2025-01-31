@@ -20,11 +20,11 @@ public class Mbc_JDlgMusicaPesquisa extends javax.swing.JDialog {
         setTitle("Pequisar em Musica");
         setLocationRelativeTo(null);
         
-        ControllerMusica controllerMusica = new ControllerMusica();
+        controllerMusica = new ControllerMusica();
         MusicaDAO musicaDAO = new MusicaDAO();
         List lista = musicaDAO.listAll();
         controllerMusica(lista);
-        jTable1.setModel(controllerMusica); 
+        jTable1.setModel(controllerMusica);
     }
     
     public void setTelaAnterior(Mbc_JDlgMusica jDlgMusica){
@@ -91,11 +91,26 @@ public class Mbc_JDlgMusicaPesquisa extends javax.swing.JDialog {
 
     private void jBtnConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConcluirActionPerformed
         // TODO add your handling code here:
-        int rowSel = jTable1.getSelectedRow();
-        MbcMusica mbcMusica = controllerMusica.getBean(rowSel);
-        jDlgMusica.beanView(mbcMusica);
-        this.setVisible(false);
-        this.dispose();
+        if (controllerMusica == null) {
+            System.out.println("controllerUsuarios não foi inicializado.");
+            return;
+        }
+
+        if (jTable1.getModel() == null) {
+            System.out.println("Modelo da tabela não foi configurado.");
+            return;
+        }
+        
+        
+        int rowSel= jTable1.getSelectedRow(); // Obtém o objeto Musica da linha selecionada
+        MbcMusica musica = controllerMusica.getBean(rowSel); // Chama o método de atualização na tela principal
+        jDlgMusica.beanView(musica); 
+        
+        // Torna a janela de pesquisa invisível após a seleção
+        jDlgMusica.setVisible(true); // Certifique-se de que esta ação está fazendo a janela principal visível novamente
+
+        // Fecha a janela de pesquisa
+        this.setVisible(false);  // Fecha a janela de pesquisa (Mbc_JDlgMusicaPesquisa)
     }//GEN-LAST:event_jBtnConcluirActionPerformed
 
     public static void main(String args[]) {

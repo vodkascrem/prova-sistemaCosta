@@ -72,7 +72,7 @@ public class Vendas  implements java.io.Serializable {
     }
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @Column(name="album")
+    @JoinColumn(name="album")
     public Album getAlbum() {
         return this.album;
     }

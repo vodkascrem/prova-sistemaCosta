@@ -20,7 +20,7 @@ public class Mbc_JDlgClientesPesquisa extends javax.swing.JDialog {
         setTitle("Pequisar em Clientes");
         setLocationRelativeTo(null);
         
-        ControllerClientes controllerClientes = new ControllerClientes();
+        controllerClientes = new ControllerClientes();
         ClientesDAO clientesDAO = new ClientesDAO();
         List lista = clientesDAO.listAll();
         controllerClientes.setLista(lista);
@@ -91,11 +91,26 @@ public class Mbc_JDlgClientesPesquisa extends javax.swing.JDialog {
 
     private void jBtnConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConcluirActionPerformed
         // TODO add your handling code here:
-        int rowSel = jTable1.getSelectedRow();
-        Clientes clientes = controllerClientes.getBean(rowSel);
-        jDlgClientes.beanView(clientes);
-        this.setVisible(false);
-        this.dispose();
+        if (controllerClientes == null) {
+            System.out.println("controllerUsuarios não foi inicializado.");
+            return;
+        }
+
+        if (jTable1.getModel() == null) {
+            System.out.println("Modelo da tabela não foi configurado.");
+            return;
+        }
+        
+        
+        int rowSel= jTable1.getSelectedRow(); // Obtém o objeto Usuarios da linha selecionada
+        Clientes clientes = controllerClientes.getBean(rowSel); // Chama o método de atualização na tela principal
+        jDlgClientes.beanView(clientes); 
+        
+        // Torna a janela de pesquisa invisível após a seleção
+        jDlgClientes.setVisible(true); // Certifique-se de que esta ação está fazendo a janela principal visível novamente
+
+        // Fecha a janela de pesquisa
+        this.setVisible(false);  // Fecha a janela de pesquisa (Mbc_JDlgUsuariosPesquisa)
     }//GEN-LAST:event_jBtnConcluirActionPerformed
 
     public static void main(String args[]) {

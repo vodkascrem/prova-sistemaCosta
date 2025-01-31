@@ -4,6 +4,7 @@
  */
 package view;
 import bean.Album;
+import dao.AlbumDAO;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,6 +18,10 @@ import tools.Util;
  * @author vodka
  */
 public class Mbc_JDlgAlbum extends javax.swing.JFrame {
+    
+    private boolean incluindo;
+    public Album album;
+    private AlbumDAO albumDAO;
 
     private MaskFormatter maskData;
     /**
@@ -44,6 +49,7 @@ public class Mbc_JDlgAlbum extends javax.swing.JFrame {
         album.setIdalbum(Util.strToInt(jTxtCodigo.getText()));
         album.setNomeArtista(jTxtNome.getText());
         album.setTitulo(jTxtTitulo.getText());
+        album.setGenero(jTxtGenero.getText());
         return album;
     }
     
@@ -51,6 +57,7 @@ public class Mbc_JDlgAlbum extends javax.swing.JFrame {
         jTxtCodigo.setText(Util.intToString(album.getIdalbum()));
         jTxtNome.setText(album.getNomeArtista());
         jTxtTitulo.setText(album.getTitulo());
+        jTxtGenero.setText(album.getGenero());
     }
     
 
@@ -303,6 +310,8 @@ public class Mbc_JDlgAlbum extends javax.swing.JFrame {
         Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem,
                 jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
+        
+        jTxtCodigo.grabFocus();
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
@@ -313,16 +322,33 @@ public class Mbc_JDlgAlbum extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisaActionPerformed
-        Mbc_JDlgUsuariosPesquisa jDlgCliPesq = new Mbc_JDlgUsuariosPesquisa (null, true);
-        jDlgCliPesq.setVisible (true);
+        Mbc_JDlgAlbumPesquisa jDlgAlbPesq = new Mbc_JDlgAlbumPesquisa (null, true);
+        jDlgAlbPesq.setTelaAnterior(this);
+        jDlgAlbPesq.setVisible (true);
     }//GEN-LAST:event_jBtnPesquisaActionPerformed
     
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Código: " + jTxtCodigo.getText());  // Verificando o valor do campo
+
+        
+        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem,
+                jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
         Util.limpar(jTxtCodigo, jTxtNome, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem);
+
+        if (Util.perguntar("Deseja excluir?") == true) {
+            
+            album = viewBean();
+            albumDAO = new AlbumDAO();
+            Util.mensagem("Registro Excluído com sucesso");
+        }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
+        AlbumDAO albumDAO = new AlbumDAO();
+        Album album = viewBean();
+        albumDAO.insert(album);
+        
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem,
                 jBtnConfirmar, jBtnCancelar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
@@ -334,6 +360,7 @@ public class Mbc_JDlgAlbum extends javax.swing.JFrame {
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem,
                 jBtnConfirmar, jBtnCancelar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
+        Util.limpar(jTxtCodigo, jTxtNome, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jTxtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtNomeActionPerformed

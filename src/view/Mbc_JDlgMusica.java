@@ -4,6 +4,7 @@
  */
 package view;
 import bean.MbcMusica;
+import dao.MusicaDAO;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +19,10 @@ import tools.Util;
  */
 public class Mbc_JDlgMusica extends javax.swing.JFrame {
 
+    private boolean incluindo;
+    public MbcMusica musica;
+    private MusicaDAO musicaDAO;
+    
     private MaskFormatter maskData;
     /**
      * Creates new form TelaUsuario
@@ -43,6 +48,7 @@ public class Mbc_JDlgMusica extends javax.swing.JFrame {
         musica.setMbcIdmusica(Util.strToInt(jTxtCodigo.getText()));
         musica.setMbcTitulo(jTxtTitulo.getText());
         musica.setMbcGenero(jTxtGenero.getText());
+        musica.setMbcAddAlbum(jCboAdd.getSelectedIndex());
         return musica;
     }
     
@@ -50,6 +56,8 @@ public class Mbc_JDlgMusica extends javax.swing.JFrame {
         jTxtCodigo.setText(Util.intToString(musica.getMbcIdmusica()));
         jTxtTitulo.setText(musica.getMbcTitulo());
         jTxtGenero.setText(musica.getMbcGenero());
+        jCboAdd.setSelectedIndex(musica.getMbcAddAlbum());
+        
     }
 
     /**
@@ -303,6 +311,8 @@ public class Mbc_JDlgMusica extends javax.swing.JFrame {
         Util.habilitar(true, jTxtCodigo, jCboAdd, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem,
                 jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
+        
+        jTxtCodigo.grabFocus();
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
@@ -313,17 +323,36 @@ public class Mbc_JDlgMusica extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisaActionPerformed
-       Mbc_JDlgUsuariosPesquisa jDlgCliPesq = new Mbc_JDlgUsuariosPesquisa (null, true);
-       jDlgCliPesq.setVisible (true);
+       Mbc_JDlgMusicaPesquisa jDlgMuPesq = new Mbc_JDlgMusicaPesquisa (null, true);
+       jDlgMuPesq.setTelaAnterior(this);
+       jDlgMuPesq.setVisible (true);
     }//GEN-LAST:event_jBtnPesquisaActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
+        System.out.println("Código: " + jTxtCodigo.getText());  // Verificando o valor do campo
+
+        
+        Util.habilitar(false, jTxtCodigo, jCboAdd, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem,
+                jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);
         Util.limpar(jTxtCodigo, jCboAdd, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem);
+
+        if (Util.perguntar("Deseja excluir?") == true) {
+            
+            musica = viewBean();
+            musicaDAO = new MusicaDAO();
+            musicaDAO.delete(musica);
+            Util.mensagem("Registro Excluído com sucesso");
+        }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
+        MusicaDAO musicaDAO = new MusicaDAO();
+        MbcMusica musica = viewBean();
+        musicaDAO.insert(musica);
+        
         Util.habilitar(false, jTxtCodigo, jCboAdd, jTxtTitulo, jTxtGenero, jFmtData, jTxtDescricao, jTxtImagem,
                 jBtnConfirmar, jBtnCancelar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisa);

@@ -20,7 +20,7 @@ public class Mbc_JDlgAlbumPesquisa extends javax.swing.JDialog {
         setTitle("Pequisar em Album");
         setLocationRelativeTo(null);
         
-        ControllerAlbum controllerAlbum = new ControllerAlbum();
+        controllerAlbum = new ControllerAlbum();
         AlbumDAO albumDAO = new AlbumDAO();
         List lista = albumDAO.listAll();
         controllerAlbum.setLista(lista);
@@ -91,11 +91,26 @@ public class Mbc_JDlgAlbumPesquisa extends javax.swing.JDialog {
 
     private void jBtnConcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConcluirActionPerformed
         // TODO add your handling code here:
-        int rowSel = jTable1.getSelectedRow();
-        Album clientes = controllerAlbum.getBean(rowSel);
-        jDlgAlbum.beanView(clientes);
-        this.setVisible(false);
-        this.dispose();
+        if (controllerAlbum == null) {
+            System.out.println("controllerUsuarios não foi inicializado.");
+            return;
+        }
+
+        if (jTable1.getModel() == null) {
+            System.out.println("Modelo da tabela não foi configurado.");
+            return;
+        }
+        
+        
+        int rowSel= jTable1.getSelectedRow(); // Obtém o objeto Album da linha selecionada
+        Album album = controllerAlbum.getBean(rowSel); // Chama o método de atualização na tela principal
+        jDlgAlbum.beanView(album); 
+        
+        // Torna a janela de pesquisa invisível após a seleção
+        jDlgAlbum.setVisible(true); // Certifique-se de que esta ação está fazendo a janela principal visível novamente
+
+        // Fecha a janela de pesquisa
+        this.setVisible(false);  // Fecha a janela de pesquisa (Mbc_JDlgAlbumPesquisa)
     }//GEN-LAST:event_jBtnConcluirActionPerformed
 
     public static void main(String args[]) {

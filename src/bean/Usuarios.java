@@ -5,6 +5,8 @@ package bean;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -33,7 +35,7 @@ public class Usuarios  implements java.io.Serializable {
      private Date dataCadastro;
      private String descricao;
      private int status;
-     private int tipoUsuario;
+     private int tipoFornecedor;
 
     public Usuarios() {
     }
@@ -42,7 +44,7 @@ public class Usuarios  implements java.io.Serializable {
     public Usuarios(int idusuarios) {
         this.idusuarios = idusuarios;
     }
-    public Usuarios(int idusuarios, String nome, String email, String senha, String telefone, String endereco, String cidade, String estado, String cep, String cnpj, Date dataCadastro, String descricao, int status, int tipoUsuario) {
+    public Usuarios(int idusuarios, String nome, String email, String senha, String telefone, String endereco, String cidade, String estado, String cep, String cnpj, Date dataCadastro, String descricao, int status, int tipoFornecedor) {
        this.idusuarios = idusuarios;
        this.nome = nome;
        this.email = email;
@@ -56,13 +58,12 @@ public class Usuarios  implements java.io.Serializable {
        this.dataCadastro = dataCadastro;
        this.descricao = descricao;
        this.status = status;
-       this.tipoUsuario = tipoUsuario;
+       this.tipoFornecedor = tipoFornecedor;
     }
    
-     @Id 
-
-    
-    @Column(name="idusuarios", unique=true, nullable=false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idusuarios")
     public int getIdusuarios() {
         return this.idusuarios;
     }
@@ -192,18 +193,14 @@ public class Usuarios  implements java.io.Serializable {
     }
 
     
-    @Column(name="tipoUsuario")
-    public int getTipoUsuario() {
-        return this.tipoUsuario;
+    @Column(name="tipoFornecedor")
+    public int getTipoFornecedor() {
+        return this.tipoFornecedor;
     }
     
-    public void setTipoUsuario(int tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
+    public void setTipoFornecedor(int tipoFornecedor) {
+        this.tipoFornecedor = tipoFornecedor;
     }
-
-
-
-
 }
 
 

@@ -1,12 +1,12 @@
 package view;
-import bean.MbcMusica;
+import bean.VendasProdutos;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 /**
  *
  * @author vodka
  */
-public class ControllerMusica extends AbstractTableModel {
+public class ControllerVendasProdutos extends AbstractTableModel {
 
     private List lista;
     
@@ -14,8 +14,8 @@ public class ControllerMusica extends AbstractTableModel {
         this.lista = lista;
     }
     
-    public MbcMusica getBean(int rowIndex){
-        return (MbcMusica) lista.get(rowIndex);
+    public VendasProdutos getBean(int rowIndex){
+        return (VendasProdutos) lista.get(rowIndex);
     }
     
     @Override
@@ -30,18 +30,18 @@ public class ControllerMusica extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        MbcMusica musica = (MbcMusica) lista.get(rowIndex);
+        VendasProdutos vendasProdutos = (VendasProdutos) lista.get(rowIndex);
         if (columnIndex  == 0) {
-            return musica.getMbcIdmusica();
+            return vendasProdutos.getIdvpro();
         } 
         if (columnIndex  == 1) {
-            return musica.getMbcTitulo();
+            return vendasProdutos.getQuantidade();
         } 
         if (columnIndex  == 2) {
-            return musica.getMbcGenero();
+            return vendasProdutos.getValorTotal();
         } 
         
-        return musica;
+        return vendasProdutos;
         
     }
     
@@ -51,10 +51,10 @@ public class ControllerMusica extends AbstractTableModel {
             return "Código";
         }
         if(columnIndex == 1){
-            return "Titulo";
+            return "Quantidade";
         }
         if(columnIndex == 2){
-            return "Genero";
+            return "Nome";
         }
             return "";
     }

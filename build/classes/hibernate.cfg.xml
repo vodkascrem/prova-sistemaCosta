@@ -43,11 +43,12 @@ Contributor(s):
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db_matheuscosta?zeroDateTimeBehavior=convertToNull [matheus_souza on Default schema]</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db_matheuscosta?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">matheus_souza</property>
+    <property name="hibernate.connection.password">matheus_souza</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="bean.Album"/>
     <mapping class="bean.Usuarios"/>
-    <mapping class="bean.VendasProdutosId"/>
     <mapping class="bean.Clientes"/>
     <mapping class="bean.MbcMusica"/>
     <mapping class="bean.Vendas"/>
